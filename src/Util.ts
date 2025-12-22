@@ -37,6 +37,11 @@ export function Heapify(array: number[], heapSize: number, i: number) {
     }
 }
 
+/*
+Purpose: Builds a max heap from an unsorted array by enforcing the heap property.
+Arguments: 'array' of type number[].
+Time Complexity: O(n).
+*/
 export function BuildMaxHeap(array: number[]) {
     let n: number = array.length;
 
