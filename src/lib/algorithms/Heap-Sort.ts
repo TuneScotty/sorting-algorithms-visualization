@@ -1,16 +1,21 @@
 /*
-Purpose: Measures and logs the execution time of a function while returning its result.
-Arguments: 'tag' label used for logging of type string and 'fn' function to be executed and timed of type Generic Promise.
-Time complexity: O(1) + complexity of the given fn.
+Purpose: Heap Sort sorts an array by first building a max heap,
+then repeatedly moving the maximum element to the end of the array and restoring the heap property on the remaining elements.
+Arguments: 'array' of type number[] (a list of numbers).
+Time Complexity: O(n log n)
 */
-export const time = async <T>(tag: string, fn: () => T | Promise<T>): Promise<T> => {
-  const t = performance.now();
-  const r = await fn();
-  console.log(`${tag}: ${performance.now() - t} ms`)
-  return r
-}
+export function HeapSort(array: number[]) {
+  BuildMaxHeap(array);
 
-// Heap methods
+  for (let i: number = array.length-1; i>0; i--) {
+    const tmp: number = array[0];
+    array[0] = array[i];
+    array[i] = tmp;
+
+    Heapify(array, i, 0);
+  }  
+  return array;
+}
 
 /*
 Purpose: Heapify purpose is to bring the maximum value within a heap inside of an array to the top of the array,
@@ -43,7 +48,7 @@ Arguments: 'array' of type number[].
 Time Complexity: O(n).
 */
 export function BuildMaxHeap(array: number[]) {
-    let n: number = array.length;
+    const n: number = array.length;
 
     for (let i: number = Math.floor(n/2)- 1; i>=0; i--) {
         Heapify(array, n, i);
