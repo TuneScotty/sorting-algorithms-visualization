@@ -11,7 +11,7 @@ function App() {
   const genRef = useRef<AlgorithmGenerator | null>(null)
   const canvasRef = useRef<CanvasBarsHandle | null>(null);
   const arrayRef = useRef<number[]>([]);
-  const [arrVal, setArr] = useState(2)
+  const [arrVal, setArr] = useState(512)
 
   useEffect(() => {
     if (timerRef.current !== null) {
@@ -38,7 +38,7 @@ function App() {
           Array Length (2-1024): {arrVal}
         </label>
         <br></br>
-        <input min={2} max={1024} type='range' step={1}
+        <input min={2} max={1024} type='range' step={1} value={arrVal}
           onInput={(e) => {
             setArr(Number(e.currentTarget.value))
           }}
